@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>cryptosa — Polygon DEX арбитраж сканер</title>
+  <meta name="description" content="cryptosa — Android-приложение для поиска арбитражных возможностей между QuickSwap и SushiSwap на Polygon PoS." />
+  <style>
+    :root {
+      --bg: #0e0a1a;
+      --bg2: #1a1030;
+      --accent: #8b5cf6;
+      --accent2: #6750a4;
+      --text: #ece7ff;
+      --muted: #a99fd0;
+      --card: rgba(255, 255, 255, 0.04);
+      --border: rgba(255, 255, 255, 0.08);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      background: radial-gradient(1200px 600px at 50% -10%, var(--bg2), var(--bg) 70%);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, sans-serif;
+      min-height: 100vh;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; padding: 56px 20px 80px; }
+    header { text-align: center; margin-bottom: 36px; }
+    .logo {
+      font-size: 40px; font-weight: 800; letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text; background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .tagline { color: var(--muted); margin-top: 8px; font-size: 17px; }
+    .badges {
+      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-top: 16px;
+    }
+    .badge {
+      font-size: 12px; padding: 4px 10px; border: 1px solid var(--border);
+      border-radius: 999px; color: var(--muted); background: var(--card);
+    }
+
+    .cta {
+      background: var(--card); border: 1px solid var(--border); border-radius: 18px;
+      padding: 32px 24px; text-align: center; margin-bottom: 40px;
+      backdrop-filter: blur(6px);
+    }
+    .cta h2 { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+    .cta p { color: var(--muted); font-size: 14px; margin-bottom: 22px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff; text-decoration: none; padding: 14px 28px; border-radius: 12px;
+      font-weight: 600; font-size: 16px;
+      box-shadow: 0 10px 30px -10px rgba(139, 92, 246, 0.6);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px -12px rgba(139, 92, 246, 0.7);
+    }
+    .btn svg { width: 20px; height: 20px; }
+    .meta { margin-top: 14px; font-size: 13px; color: var(--muted); }
+
+    .features {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px; margin-bottom: 40px;
+    }
+    .feature {
+      background: var(--card); border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px;
+    }
+    .feature .icon { font-size: 22px; margin-bottom: 8px; }
+    .feature h3 { font-size: 15px; margin-bottom: 4px; }
+    .feature p { color: var(--muted); font-size: 13.5px; }
+
+    .disclaimer {
+      font-size: 13px; color: var(--muted); border-left: 3px solid var(--accent);
+      padding: 10px 14px; background: var(--card); border-radius: 0 10px 10px 0;
+      margin-bottom: 24px;
+    }
+
+    footer { text-align: center; color: var(--muted); font-size: 13px; margin-top: 32px; }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">cryptosa</div>
+      <div class="tagline">Polygon DEX арбитраж сканер для Android</div>
+      <div class="badges">
+        <span class="badge">Polygon PoS</span>
+        <span class="badge">QuickSwap · SushiSwap</span>
+        <span class="badge">On-chain</span>
+        <span class="badge">Flutter</span>
+      </div>
+    </header>
+
+    <section class="cta">
+      <h2>Скачать приложение</h2>
+      <p>APK для Android (arm64). Разрешите установку из неизвестных источников и откройте файл.</p>
+      <a class="btn" href="./cryptosa-1.0.0-arm64-debug.apk" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Скачать APK
+      </a>
+      <div class="meta">v1.0.0 · debug · arm64-v8a · 75.4 МБ</div>
+    </section>
+
+    <div class="disclaimer">
+      ⚠️ <strong>Только сканер.</strong> Приложение не отправляет транзакции и не
+      управляет средствами. Реальные арбитражные возможности на публичном Polygon
+      закрываются ботами за миллисекунды — этот MVP иллюстрирует механику.
+    </div>
+
+    <section class="features">
+      <div class="feature">
+        <div class="icon">🔍</div>
+        <h3>Сканирование</h3>
+        <p>9 пар на QuickSwap и SushiSwap, каждые 3/10/30 секунд.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">💰</div>
+        <h3>Round-trip PnL</h3>
+        <p>Точная прибыль с учётом комиссий 2×0.3%, price impact и газа.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔗</div>
+        <h3>On-chain данные</h3>
+        <p>Резервы пулов напрямую через eth_call. USD-якорь — Chainlink.</p>
+      </div>
+      <div class="feature">
+        <div class="icon">🔔</div>
+        <h3>Уведомления</h3>
+        <p>Локальные уведомления при PnL ≥ 1% (с debounce).</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        Исходный код:
+        <a href="https://github.com/oddsouls/cryptosa">github.com/oddsouls/cryptosa</a>
+      </p>
+      <p style="margin-top:8px;">© 2026 oddsouls</p>
+    </footer>
+  </div>
+</body>
+</html>
